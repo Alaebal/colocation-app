@@ -24,3 +24,18 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hero {
+  background-image: url('/colocation.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* prend toute la hauteur de l'écran */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}

@@ -10,11 +10,11 @@ export default function Navbar() {
     { label: "Accueil", href: "/" },
     { label: "Annonces", href: "/maisons" },
     { label: "Réservation", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "Contact", href: "/#contact" },
   ];
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 md:px-10 py-8">
+    <nav className="fixed top-0 left-0 right-0 z-50 h-20 flex items-center justify-between px-6 md:px-10">
       <span className="text-white text-lg font-semibold tracking-wide">
        logo
       </span>
