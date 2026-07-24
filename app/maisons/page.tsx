@@ -1,23 +1,13 @@
 import { annonces } from "../../lib/annonces";
-import "./globals.css";
-import Navbar from "../components/Navbar";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="fr">
-      <body>
-        <Navbar />
-        <main>{children}</main>
-      </body>
-    </html>
-  );
-}
-
-export default function MaisonsPage() {
+export default function Maisons() {
   return (
     <main className="py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-semibold mb-6">Toutes les annonces</h1>
+        <h1 className="text-3xl font-semibold mb-6">
+          Toutes les annonces
+        </h1>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {annonces.map((s) => (
             <article key={s.id} className="border rounded-lg p-4 shadow-sm">

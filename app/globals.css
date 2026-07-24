@@ -1,41 +1,42 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --page-bg: #f5f0e8;
+  --ink: #161616;
+  --sand: #ded2bf;
+  --paper: rgba(255, 255, 255, 0.78);
+  --olive-900: #28301f;
+  --olive-800: #3e4b2f;
+  --olive-200: #d7dbc2;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% -10%, rgba(255, 255, 255, 0.45), transparent 36%),
+    radial-gradient(circle at 100% 5%, rgba(22, 22, 22, 0.08), transparent 30%),
+    var(--page-bg);
+  color: var(--ink);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-.hero {
-  background-image: url('/colocation.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 100vh; /* prend toute la hauteur de l'écran */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
+h1,
+h2,
+h3,
+.display-font {
+  font-family: var(--font-display), Georgia, serif;
 }
+
+a,
+button {
+  transition: all 0.25s ease;
+}
+
+::selection {
+  background: rgba(22, 22, 22, 0.12);
+}
+
