@@ -1,6 +1,7 @@
-import { annonces } from "../lib/annonces";
+import { getAnnonces } from "../lib/annonces";
 
-export default function Annonces() {
+export default async function Annonces() {
+  const annonces = await getAnnonces();
   const preview = annonces.slice(0, 3); // juste un aperçu sur la home
 
   return (

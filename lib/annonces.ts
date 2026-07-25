@@ -1,13 +1,22 @@
 // lib/annonces.ts
+import { prisma } from "@/lib/prisma";
+
 export type Annonce = {
-  id: number;
+  id: string;
   title: string;
   desc: string;
   image?: string;
 };
 
-export const annonces: Annonce[] = [
-  { id: 1, title: "Maison en bord de mer", desc: "4 chambres · 2 salles de bain · Vue mer" },
-  { id: 2, title: "Chalet en montagne", desc: "3 chambres · Poêle à bois · Proche randos" },
-  { id: 3, title: "Villa avec piscine", desc: "5 chambres · Piscine privée · Jardin" },
-];
+export async function getAnnonces(): Promise<Annonce[]> {
+  const annonces = await prisma.annonce.findMany({
+    orderBy: { createdAt: "desc" },
+  });
+
+  return annonces.map((a) => ({
+    id: a.id,
+    title: a.titre,
+    desc: a.description,
+    image: a.images[0],
+  }));
+}

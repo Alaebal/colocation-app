@@ -61,7 +61,7 @@ export default function Navbar() {
               className="h-10 w-10 rounded-full"
             />
             <span
-              className={`${playfair.className} hidden text-3xl tracking-wide transition-colors sm:block ${
+              className={`${playfair.className} hidden text-2xl tracking-wide transition-colors xl:block ${
                 isHomeHero ? "text-[var(--olive-200)]" : "text-[var(--olive-800)]"
               }`}
             >
@@ -70,7 +70,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop */}
-          <div className="hidden items-center gap-10 md:flex">
+          <div className="hidden items-center gap-8 md:flex">
             {links.map((link) => (
               <Link
                 key={link.label}

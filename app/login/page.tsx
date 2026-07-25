@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LoginForm from "./LoginForm";
 
 export default function LoginPage() {
 	return (
@@ -10,32 +11,7 @@ export default function LoginPage() {
 					Saisissez votre adresse e-mail et votre mot de passe pour accéder à votre espace.
 				</p>
 
-				<form className="mt-8 grid gap-4">
-					<input
-						type="email"
-						placeholder="Adresse e-mail"
-						className="rounded-full border border-neutral-900/10 bg-white px-5 py-3 text-neutral-950 placeholder:text-neutral-500 focus:border-[var(--olive-800)] focus:outline-none"
-					/>
-					<input
-						type="password"
-						placeholder="Mot de passe"
-						className="rounded-full border border-neutral-900/10 bg-white px-5 py-3 text-neutral-950 placeholder:text-neutral-500 focus:border-[var(--olive-800)] focus:outline-none"
-					/>
-
-					<div className="flex items-center justify-between gap-4 text-sm text-neutral-600">
-						<label className="flex items-center gap-2">
-							<input type="checkbox" className="h-4 w-4 accent-[var(--olive-800)]" />
-							Se souvenir de moi
-						</label>
-						<Link href="/recover" className="font-semibold text-[var(--olive-800)] hover:text-[var(--olive-900)]">
-							Mot de passe oublié ?
-						</Link>
-					</div>
-
-					<button className="mt-2 rounded-full border border-[var(--olive-900)] bg-[var(--olive-900)] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white hover:bg-[var(--olive-800)]">
-						Se connecter
-					</button>
-				</form>
+				<LoginForm />
 
 				<div className="mt-8 border-t border-neutral-900/10 pt-6 text-sm text-neutral-600">
 					Vous n&apos;avez pas encore de compte ?{" "}

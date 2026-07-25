@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SignUpForm from "./SignUpForm";
 
 export default function SignUpPage() {
 	return (
@@ -10,19 +11,7 @@ export default function SignUpPage() {
 					Renseignez vos informations pour créer votre espace personnel.
 				</p>
 
-				<form className="mt-8 grid gap-4">
-					<div className="grid gap-4 md:grid-cols-2">
-						<input type="text" placeholder="Nom" className="rounded-full border border-neutral-900/10 bg-white px-5 py-3 placeholder:text-neutral-500 focus:border-[var(--olive-800)] focus:outline-none" />
-						<input type="text" placeholder="Prénom" className="rounded-full border border-neutral-900/10 bg-white px-5 py-3 placeholder:text-neutral-500 focus:border-[var(--olive-800)] focus:outline-none" />
-					</div>
-					<input type="email" placeholder="Adresse e-mail" className="rounded-full border border-neutral-900/10 bg-white px-5 py-3 placeholder:text-neutral-500 focus:border-[var(--olive-800)] focus:outline-none" />
-					<input type="tel" placeholder="Numéro de téléphone" className="rounded-full border border-neutral-900/10 bg-white px-5 py-3 placeholder:text-neutral-500 focus:border-[var(--olive-800)] focus:outline-none" />
-					<input type="text" placeholder="Adresse" className="rounded-full border border-neutral-900/10 bg-white px-5 py-3 placeholder:text-neutral-500 focus:border-[var(--olive-800)] focus:outline-none" />
-					<input type="password" placeholder="Mot de passe" className="rounded-full border border-neutral-900/10 bg-white px-5 py-3 placeholder:text-neutral-500 focus:border-[var(--olive-800)] focus:outline-none" />
-					<button className="mt-2 rounded-full border border-[var(--olive-900)] bg-[var(--olive-900)] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white hover:bg-[var(--olive-800)]">
-						Créer mon compte
-					</button>
-				</form>
+				<SignUpForm />
 
 				<div className="mt-8 border-t border-neutral-900/10 pt-6 text-sm text-neutral-600">
 					Déjà un compte ?{" "}

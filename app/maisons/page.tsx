@@ -1,6 +1,8 @@
-import { annonces } from "../../lib/annonces";
+import { getAnnonces } from "../../lib/annonces";
 
-export default function Maisons() {
+export default async function Maisons() {
+  const annonces = await getAnnonces();
+
   return (
     <main className="py-16 px-6">
       <div className="max-w-6xl mx-auto">

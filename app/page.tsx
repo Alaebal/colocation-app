@@ -24,7 +24,7 @@ export default function Home() {
           <h1 className="display-font mt-8 max-w-4xl text-5xl leading-[1.02] text-white md:text-7xl lg:text-[5.6rem]">
             Trouvez votre
             <br />
-            colocation d&apos;été
+            location d&apos;été
           </h1>
 
           <p className="mt-7 max-w-2xl text-base leading-8 text-white/88 md:text-lg">
