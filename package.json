@@ -11,7 +11,9 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.9.0",
     "@prisma/client": "^7.9.0",
+    "@vercel/blob": "^2.6.1",
     "bcryptjs": "^3.0.3",
+    "browser-image-compression": "^2.0.2",
     "next": "16.2.10",
     "pg": "^8.22.0",
     "prisma": "^7.9.0",

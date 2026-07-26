@@ -33,12 +33,7 @@ export default async function Annonces() {
               </div>
               <h3 className="display-font mb-2 text-2xl text-neutral-950">{s.title}</h3>
               <p className="text-sm leading-6 text-neutral-700">{s.desc}</p>
-              <a
-                href="/maisons"
-                className="mt-5 inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-900 group-hover:translate-x-0.5"
-              >
-                Voir l&apos;annonce
-              </a>
+             <a href={`/annonce/${s.id}`}>Voir l&apos;annonce</a>
             </article>
           ))}
         </div>

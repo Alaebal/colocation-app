@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../lib/generated/prisma"
@@ -11,30 +6,54 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
 model User {
-  id         String   @id @default(cuid())
-  email      String   @unique
-  password   String
-  name       String?
-  familyname String
-  address    String
-  phone      String
-  createdAt  DateTime @default(now())
-
-  annonces   Annonce[]
+  id           String        @id @default(cuid())
+  email        String        @unique
+  password     String
+  name         String?
+  familyname   String
+  address      String
+  phone        String
+  createdAt    DateTime      @default(now())
+  annonces     Annonce[]
+  reservations Reservation[]
 }
-model Annonce {
-  id          String   @id @default(cuid())
-  titre       String
-  description String
-  prix        Int
-  ville       String
-  adresse     String
-  nbChambres  Int
-  images      String[]
-  createdAt   DateTime @default(now())
 
-  // Lien avec le propriétaire de l'annonce
-  ownerId     String
-  owner       User     @relation(fields: [ownerId], references: [id])
+model Reservation {
+  id          String   @id @default(cuid())
+  dateDebut   DateTime
+  dateFin     DateTime
+  createdAt   DateTime @default(now())
+  annonceId   String
+  locataireId String
+  annonce     Annonce  @relation(fields: [annonceId], references: [id])
+  locataire   User     @relation(fields: [locataireId], references: [id])
+}
+
+model Annonce {
+  id                  String        @id @default(cuid())
+  titre               String
+  description         String
+  prix                Int
+  ville               String
+  adresse             String
+  nbChambres          Int
+  images              String[]
+  createdAt           DateTime      @default(now())
+  ownerId             String
+  autresEquipements   String[]
+  barbecue            Boolean       @default(false)
+  coinLoungeExterieur Boolean       @default(false)
+  cuisineEquipee      Boolean       @default(false)
+  distancePlage       Float?
+  environnement       String        @default("calme")
+  jacuzzi             Boolean       @default(false)
+  latitude            Float?
+  longitude           Float?
+  nbSallesEau         Int           @default(1)
+  piscine             Boolean       @default(false)
+  terrasse            Boolean       @default(false)
+  owner               User          @relation(fields: [ownerId], references: [id])
+  reservations        Reservation[]
 }

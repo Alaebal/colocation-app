@@ -5,13 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Playfair_Display } from "next/font/google";
+import { logout } from "@/app/logout/actions";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
 
-export default function Navbar() {
+type NavbarClientProps = {
+  userName: string | null;
+};
+
+export default function Navbar({ userName }: NavbarClientProps) {
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
@@ -85,16 +90,40 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <Link
-              href="/login"
-              className={`rounded-full border px-5 py-2 text-xs uppercase tracking-[0.18em] transition ${
-                isHomeHero
-                  ? "border-white/40 text-white hover:bg-white hover:text-black"
-                  : "border-black/15 bg-neutral-950 text-white hover:bg-neutral-800"
-              }`}
-            >
-              Connexion
-            </Link>
+            {userName ? (
+              <div className="flex items-center gap-3">
+                <span
+                  className={`text-xs uppercase tracking-[0.18em] ${
+                    isHomeHero ? "text-white/90" : "text-neutral-700"
+                  }`}
+                >
+                  {userName}
+                </span>
+                <form action={logout}>
+                  <button
+                    type="submit"
+                    className={`rounded-full border px-5 py-2 text-xs uppercase tracking-[0.18em] transition ${
+                      isHomeHero
+                        ? "border-white/40 text-white hover:bg-white hover:text-black"
+                        : "border-black/15 bg-neutral-950 text-white hover:bg-neutral-800"
+                    }`}
+                  >
+                    Déconnexion
+                  </button>
+                </form>
+              </div>
+            ) : (
+              <Link
+                href="/login"
+                className={`rounded-full border px-5 py-2 text-xs uppercase tracking-[0.18em] transition ${
+                  isHomeHero
+                    ? "border-white/40 text-white hover:bg-white hover:text-black"
+                    : "border-black/15 bg-neutral-950 text-white hover:bg-neutral-800"
+                }`}
+              >
+                Connexion
+              </Link>
+            )}
           </div>
 
           {/* Bouton Mobile */}
@@ -134,17 +163,33 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <Link
-              href="/login"
-              onClick={() => setOpen(false)}
-              className={`rounded-full border px-6 py-3 text-sm uppercase tracking-[0.18em] transition ${
-                isHomeHero
-                  ? "border-white/40 text-white hover:bg-white hover:text-black"
-                  : "border-black/10 bg-neutral-950 text-white hover:bg-neutral-800"
-              }`}
-            >
-              Connexion
-            </Link>
+            {userName ? (
+              <form action={logout}>
+                <button
+                  type="submit"
+                  onClick={() => setOpen(false)}
+                  className={`rounded-full border px-6 py-3 text-sm uppercase tracking-[0.18em] transition ${
+                    isHomeHero
+                      ? "border-white/40 text-white hover:bg-white hover:text-black"
+                      : "border-black/10 bg-neutral-950 text-white hover:bg-neutral-800"
+                  }`}
+                >
+                  Déconnexion
+                </button>
+              </form>
+            ) : (
+              <Link
+                href="/login"
+                onClick={() => setOpen(false)}
+                className={`rounded-full border px-6 py-3 text-sm uppercase tracking-[0.18em] transition ${
+                  isHomeHero
+                    ? "border-white/40 text-white hover:bg-white hover:text-black"
+                    : "border-black/10 bg-neutral-950 text-white hover:bg-neutral-800"
+                }`}
+              >
+                Connexion
+              </Link>
+            )}
           </div>
         </div>
       )}
