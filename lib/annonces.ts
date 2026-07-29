@@ -24,11 +24,11 @@ export async function getAnnonces(): Promise<Annonce[]> {
 export async function getAnnonceById(id: string) {
   return prisma.annonce.findUnique({
     where: { id },
-    include: { reservations: true },
-  }) as Promise<
-    | Prisma.AnnonceGetPayload<{ include: { reservations: true } }>
-    | null
-  >;
+    include: {
+      reservations: true,
+      owner: true,
+    },
+  });
 }
 export type AnnonceFilters = {
   prixMin?: number;

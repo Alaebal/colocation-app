@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { supprimerAnnonce } from "@/app/annonce/[id]/actions";
 
 type AnnonceCardProps = {
@@ -8,6 +9,7 @@ type AnnonceCardProps = {
     description: string;
     prix: number;
     ville: string;
+    images: string[];
   };
   isOwner: boolean;
 };
@@ -23,10 +25,21 @@ export default function AnnonceCard({ annonce, isOwner }: AnnonceCardProps) {
         </span>
       )}
 
-      <div className="mb-5 h-44 rounded-[1.5rem] bg-gradient-to-br from-neutral-900 via-neutral-700 to-neutral-500" />
+      <div className="relative mb-5 h-44 overflow-hidden rounded-[1.5rem] bg-neutral-200">
+        {annonce.images.length > 0 ? (
+          <Image
+            src={annonce.images[0]}
+            alt={annonce.titre}
+            fill
+            className="object-cover"
+          />
+        ) : (
+          <div className="h-full w-full bg-gradient-to-br from-neutral-900 via-neutral-700 to-neutral-500" />
+        )}
+      </div>
 
       <h3 className="display-font mb-2 text-2xl text-neutral-950">{annonce.titre}</h3>
-      <p className="text-sm text-neutral-600">{annonce.ville} · {annonce.prix} DT / nuit</p>
+      <p className="text-sm text-neutral-600">{annonce.ville} · {annonce.prix} € / nuit</p>
       <p className="mt-2 text-sm leading-6 text-neutral-700">{annonce.description}</p>
 
       <div className="mt-5 flex items-center justify-between">

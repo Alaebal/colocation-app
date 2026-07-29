@@ -1,6 +1,7 @@
+// components/CreerAnnonceForm.tsx
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useState, FormEvent } from "react";
 import { creerAnnonce, type CreerAnnonceState } from "@/app/annonce/creer/actions";
 import ImageUploader from "@/components/ImageUploader";
 
@@ -12,9 +13,24 @@ const inputClass =
 export default function CreerAnnonceForm() {
   const [state, formAction, isPending] = useActionState(creerAnnonce, initialState);
   const [images, setImages] = useState<string[]>([]);
+  const [formError, setFormError] = useState<string>("");
+
+  const handleImagesUploaded = (newImages: string[]) => {
+    setImages((prev: string[]) => [...prev, ...newImages]);
+    setFormError('');
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    if (images.length === 0) {
+      e.preventDefault();
+      setFormError('Veuillez ajouter au moins une photo');
+      return;
+    }
+    // Le formulaire va se soumettre normalement
+  };
 
   return (
-    <form action={formAction} className="grid gap-4">
+    <form action={formAction} onSubmit={handleSubmit} className="grid gap-4">
       <input name="titre" type="text" placeholder="Titre de l'annonce" required className={inputClass} />
 
       <textarea
@@ -72,8 +88,11 @@ export default function CreerAnnonceForm() {
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
           Photos
         </p>
-        <ImageUploader onImagesUploaded={(urls) => setImages((prev) => [...prev, ...urls])} />
+        <ImageUploader onImagesUploaded={handleImagesUploaded} />
         <input type="hidden" name="images" value={JSON.stringify(images)} />
+        {formError && (
+          <p className="text-sm font-medium text-red-600 mt-2">{formError}</p>
+        )}
       </div>
 
       {state.error && <p className="text-sm font-medium text-red-600">{state.error}</p>}
