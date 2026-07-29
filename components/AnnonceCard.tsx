@@ -39,7 +39,7 @@ export default function AnnonceCard({ annonce, isOwner }: AnnonceCardProps) {
       </div>
 
       <h3 className="display-font mb-2 text-2xl text-neutral-950">{annonce.titre}</h3>
-      <p className="text-sm text-neutral-600">{annonce.ville} · {annonce.prix} € / nuit</p>
+      <p className="text-sm text-neutral-600">{annonce.ville} · {annonce.prix} DT / nuit</p>
       <p className="mt-2 text-sm leading-6 text-neutral-700">{annonce.description}</p>
 
       <div className="mt-5 flex items-center justify-between">
